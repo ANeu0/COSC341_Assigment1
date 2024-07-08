@@ -1,6 +1,13 @@
 ## Project Description
 For class COSC 341
 
+## Contributing: 
+    1. make branch off `master` 
+    2. Name branch feature_task
+    3. Make changes
+    4. Push branch
+    5. Make Pull request
+
 ## Tasks:
 - UI 
 	- [ ] Add skin for sphere
