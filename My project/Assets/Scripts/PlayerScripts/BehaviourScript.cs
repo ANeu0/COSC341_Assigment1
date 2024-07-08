@@ -4,10 +4,12 @@ public class BehaviourScript : MonoBehaviour
 {
     public UnityEngine.Object _playerSphere;
     public float baseSpeed = 5f;
-    public const string X_MOVEMENT = "Horizontal";
-    public const string Y_MOVEMENT = "Vertical";
+    private const string X_MOVEMENT = "Horizontal";
+    private const string Y_MOVEMENT = "Vertical";
     public float jumpForce = 5f;
     private bool isGrounded;
+    private bool isGameOver = false;
+    private int points = 0;
 
     private Rigidbody _rb;
     // Start is called before the first frame update
@@ -43,5 +45,9 @@ public class BehaviourScript : MonoBehaviour
         {
             isGrounded = true;
         }
+        if (collision.gameObject.CompareTag("Enemy")){
+            Debug.Log("Player ded");
+            isGameOver = true;
+        } 
     }
 }

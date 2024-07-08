@@ -24,7 +24,7 @@ public class EnemyAI : MonoBehaviour
     {
         // Calculate the direction to the player
         Vector3 direction = player.position - transform.position;
-        direction.y = 0; // Ensure the enemy stays on the same plane
+        //direction.y = 0; // Ensure the enemy stays on the same plane
 
         // Check if the enemy is within stopping distance
         if (direction.magnitude > stoppingDistance)
