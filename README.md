@@ -2,36 +2,15 @@
 For class COSC 341
 
 ## Contributing: 
-    1. make branch off `master` 
-    2. Name branch feature_task
-    3. Make changes
-    4. Push branch
-    5. Make Pull request
+ex:
+1. git pull origin master # make sure youre up to date
+2. git checkout master #get to default branch
+3. git checkout -b "feature_name" # makes new branch
+...write some baller code...
+4. git status #shows what yer about to commit
+5. git add . #adds all changes
+6. git commit -m"what you did" 
+7. git pull origin master # avoids merge conflicts, because they suck
+8. git push origin "feature_name"
 
-## Tasks:
-- UI 
-	- [ ] Add skin for sphere
-	- [ ] Add skin for cube
-	- [ ] Add skin for platform
-	- [ ] Add skin for background
-	- [ ] Possible 3rd party cam
-- Block 'ghosts', linear path
-	- [x] Chase Algo
-	- [x] Jump Algo {Super janky}
-	- [ ] update algo
-		- [ ] unlimited y vector
-	- [ ] pass thru "platform tag"
-	- [ ] kill on user touch 
-		- [x] Debug log
-		- [x] On collision updated
-- 3d jump
-	- [x] momentum implemented
-	- [x] ground tag
-	- [x] platform tag
-	- spiral up
-		- [ ] least 8
-	- auto generate?
-		- [ ] base next off ran + min offset
-- points
-	- [ ] Coins
-	- [ ] invincible state - star
+
