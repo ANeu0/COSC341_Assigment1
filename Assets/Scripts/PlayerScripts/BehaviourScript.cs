@@ -1,8 +1,9 @@
+
 using UnityEngine;
 
 public class BehaviourScript : MonoBehaviour
 {
-    public UnityEngine.Object _playerSphere;
+    public UnityEngine.Object playerObj;
     public float baseSpeed = 5f;
     private const string X_MOVEMENT = "Horizontal";
     private const string Y_MOVEMENT = "Vertical";
@@ -11,11 +12,10 @@ public class BehaviourScript : MonoBehaviour
     private bool isGameOver = false;
     private int points = 0;
 
-    private Rigidbody _rb;
+    public UnityEngine.Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
-        _rb = GetComponent<Rigidbody>();
         Debug.Log("Starting up");
     }
 
@@ -24,17 +24,21 @@ public class BehaviourScript : MonoBehaviour
     {
         float moveHorizontal = Input.GetAxis(X_MOVEMENT);
         float moveVertical = Input.GetAxis(Y_MOVEMENT);
+        Debug.Log($"Behavior: {moveHorizontal}:{moveVertical}");
+        //Debug.Log($"{playerObj.forward}");
+        // Calculate movement vector based on the player's orientation
+        Vector3 horiz = transform.right * moveHorizontal;
+        Vector3 vert = transform.forward * moveVertical;
 
-        // Calculate movement vector
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        // Calculate movement vector and ensure it's in the x,z plane
+        Vector3 movement = new Vector3(horiz.x + vert.x, 0.0f, horiz.z + vert.z);
 
-        // Apply movement to the Rigidbody
-        _rb.AddForce(movement * baseSpeed);
+        rb.AddForce(movement * baseSpeed);
 
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
             // Apply an upward force to the Rigidbody to make the player jump
-            _rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+            rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
             isGrounded = false;
         }
     }
@@ -45,9 +49,10 @@ public class BehaviourScript : MonoBehaviour
         {
             isGrounded = true;
         }
-        if (collision.gameObject.CompareTag("Enemy")){
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
             Debug.Log("Player ded");
             isGameOver = true;
-        } 
+        }
     }
 }
