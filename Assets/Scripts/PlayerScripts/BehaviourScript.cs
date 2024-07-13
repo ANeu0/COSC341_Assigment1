@@ -3,10 +3,10 @@ using UnityEngine;
 public class BehaviourScript : MonoBehaviour
 {
     public UnityEngine.Object _playerSphere;
-    public float baseSpeed = 5f;
+    public float baseSpeed = 2f;
     private const string X_MOVEMENT = "Horizontal";
     private const string Y_MOVEMENT = "Vertical";
-    public float jumpForce = 5f;
+    public float jumpForce = 1f;
     private bool isGrounded;
     private bool isGameOver = false;
     private int points = 0;
@@ -33,6 +33,7 @@ public class BehaviourScript : MonoBehaviour
 
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
+            Debug.Log("Jump Pressed");
             // Apply an upward force to the Rigidbody to make the player jump
             _rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
             isGrounded = false;
@@ -46,8 +47,9 @@ public class BehaviourScript : MonoBehaviour
             isGrounded = true;
         }
         if (collision.gameObject.CompareTag("Enemy")){
-            Debug.Log("Player ded");
+            Debug.Log("Player dead");
             isGameOver = true;
         } 
     }
+
 }
