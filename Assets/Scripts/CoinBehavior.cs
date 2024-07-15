@@ -15,6 +15,14 @@ public class CoinRotation : MonoBehaviour
 
     void Start()
     {
+        if(!PlayerPrefs.HasKey("Score")){
+             PlayerPrefs.SetInt("Score", score);
+        }
+       
+        score = PlayerPrefs.GetInt("Score");
+        
+        TMP_coin.text = "" + PlayerPrefs.GetInt("Score");
+
         startPosition = transform.position;
     }
 
@@ -32,8 +40,11 @@ public class CoinRotation : MonoBehaviour
         
         if (other.CompareTag("Player")){
             score++;
+            PlayerPrefs.SetInt("Score", score);
+            PlayerPrefs.Save();
             Debug.Log("Coin collided with " + other.gameObject.name);
             TMP_coin.text = "" + score.ToString();
+            
             
             Destroy(gameObject); // Destroy the parent object (which is the coin)
         }
