@@ -1,5 +1,5 @@
 ## Project Description
-For class COSC 341
+### For class COSC 341
 
 ## Contributing: 
 ex:
