@@ -41,7 +41,7 @@ public class BehaviourScript : MonoBehaviour
         forward.Normalize();
         right.Normalize();
 
-        Vector3 movement = (forward * moveVertical + right * moveHorizontal) * baseSpeed;
+        Vector3 movement = (forward * moveVertical + right * moveHorizontal) * baseSpeed * Time.deltaTime;
         rb.AddForce(movement);
     }
 
